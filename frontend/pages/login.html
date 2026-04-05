@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | MAIRAÉ</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body class="bg-beige-100 flex flex-col min-h-screen">
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-sm border border-beige-200 p-8">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-primary-dark">Welcome Back</h1>
+        <p class="text-gray-500 mt-2">Sign in to your account to continue</p>
+      </div>
+      
+      <div id="error-msg" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6 text-sm" role="alert"></div>
+
+      <form id="login-form" class="space-y-6">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+          <input type="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-green focus:ring-primary-green px-4 py-2 border" required>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" id="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-green focus:ring-primary-green px-4 py-2 border" required>
+        </div>
+
+        <button type="submit" id="submit-btn" class="w-full btn-primary py-3 font-bold flex justify-center items-center">
+          Sign In
+        </button>
+      </form>
+      
+      <p class="mt-8 text-center text-sm text-gray-500">
+        Don't have an account? 
+        <a href="/pages/register.html" class="font-medium text-primary-green hover:text-primary-dark transition-colors">Sign up</a>
+      </p>
+    </div>
+  </main>
+
+  <script type="module" src="../js/main.js"></script>
+  <script type="module">
+    import { auth } from '../js/auth.js';
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const pass = document.getElementById('password').value;
+      const errorMsg = document.getElementById('error-msg');
+      const btn = document.getElementById('submit-btn');
+      
+      errorMsg.classList.add('hidden');
+      btn.innerHTML = '<div class="inline-block animate-spin rounded-full border-2 border-solid border-white border-r-transparent h-5 w-5 mr-2"></div> Signing in...';
+      btn.disabled = true;
+
+      const result = await auth.login(email, pass);
+      
+      if (result.success) {
+        window.location.href = '/';
+      } else {
+        errorMsg.textContent = result.message;
+        errorMsg.classList.remove('hidden');
+        btn.innerHTML = 'Sign In';
+        btn.disabled = false;
+      }
+    });
+
+    // Auto redirect if already logged in
+    document.addEventListener('DOMContentLoaded', () => {
+      if (auth.isAuthenticated()) {
+        window.location.href = '/';
+      }
+    });
+  </script>
+</body>
+</html>

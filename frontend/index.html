@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAIRAÉ | Modern Barware</title>
+  <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body class="bg-beige-100 flex flex-col min-h-screen text-textDark font-sans antialiased">
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="relative bg-beige-200 py-20 lg:py-32 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-dark mb-6 leading-tight">Pour with Purpose. Drink with Distinction.</h1>
+          <p class="text-lg text-gray-700 mb-8 max-w-lg">Welcome to MAIRAÉ. Discover aesthetic glassware and premium barware designed for the bold.</p>
+          <a href="/pages/shop.html" class="btn-primary inline-flex items-center text-lg px-8 py-3">
+            Explore the Collection 
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+        <div class="md:w-1/2 relative lg:ml-10">
+          <div class="absolute inset-0 bg-primary-green opacity-20 rounded-full blur-3xl transform translate-x-10 translate-y-10"></div>
+          <img src="https://epiczone.in/cdn/shop/files/DSC03430.jpg?q=80&w=1000&auto=format&fit=crop" alt="Featured Lounge Chair" class="relative z-10 w-full rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-700">
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-primary-dark mb-12">Shop by Category</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-20">
+          <a href="/pages/shop.html?category=Martini+%26+Coupe+Glasses" class="group relative overflow-hidden rounded-full bg-beige-100 aspect-square flex flex-col items-center justify-center hover:bg-beige-200 transition-colors">
+            <h3 class="text-xl font-bold text-primary-dark z-10 group-hover:text-primary-green transition-colors">Martini & Coupe Glasses</h3>
+          </a>
+          <a href="/pages/shop.html?category=Whisky+%26+Rocks+Glasses" class="group relative overflow-hidden rounded-full bg-beige-100 aspect-square flex flex-col items-center justify-center hover:bg-beige-200 transition-colors">
+            <h3 class="text-xl font-bold text-primary-dark z-10 group-hover:text-primary-green transition-colors">Whisky & Rocks Glasses</h3>
+          </a>
+          <a href="/pages/shop.html?category=Wine+Glasses+%26+Goblets" class="group relative overflow-hidden rounded-full bg-beige-100 aspect-square flex flex-col items-center justify-center hover:bg-beige-200 transition-colors">
+            <h3 class="text-xl font-bold text-primary-dark z-10 group-hover:text-primary-green transition-colors">Wine Glasses & Goblets</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Featured Products -->
+    <section class="py-16 bg-beige-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-end mb-10">
+          <h2 class="text-3xl font-bold text-primary-dark">Featured Products</h2>
+          <a href="/pages/shop.html" class="text-primary-green font-medium hover:underline flex items-center">
+            View All
+          </a>
+        </div>
+        <div id="featured-products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Populated by JS -->
+          <div class="col-span-full text-center py-10">Loading products...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-beige-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">About Us</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center mb-16">
+          <div>
+            <h3 class="text-2xl font-bold text-primary-dark mb-4 border-l-4 border-primary-green pl-4">Our Story</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              MAIRAÉ was born from a simple realization: standard drinking glasses are forgettable. We wanted to create something extraordinary for the party and hosting crowd—pieces that spark conversations the moment they are placed on the table. Blending intricate metalwork with pristine glass, we set out to redefine designer drinkware.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-primary-dark mb-4 border-l-4 border-primary-green pl-4">Our Mission</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              To transform everyday pours into luxurious rituals. We provide the finest decorative wine glasses and unique bar accessories that serve not just as drinkware, but as breathtaking home decor.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-beige-300">
+          <h3 class="text-2xl font-bold text-primary-dark mb-8 text-center">Our Values</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="bg-beige-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-primary-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              <h4 class="text-xl font-bold text-primary-dark mb-2">Bold Design</h4>
+              <p class="text-gray-600">We champion fearless, statement-making aesthetics.</p>
+            </div>
+            <div class="text-center">
+              <div class="bg-beige-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-primary-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <h4 class="text-xl font-bold text-primary-dark mb-2">Uncompromising Quality</h4>
+              <p class="text-gray-600">Premium materials for a premium feel.</p>
+            </div>
+            <div class="text-center">
+              <div class="bg-beige-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-primary-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
+                </svg>
+              </div>
+              <h4 class="text-xl font-bold text-primary-dark mb-2">The Art of Hosting</h4>
+              <p class="text-gray-600">We believe the right luxury bar accessories can elevate any gathering into an unforgettable event.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Service Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-primary-dark mb-4">Customer Service</h2>
+          <p class="text-gray-600 border-b border-beige-200 pb-6 max-w-2xl mx-auto">Everything you need to know about shopping with MAIRAÉ</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- FAQ -->
+          <div>
+            <h3 class="text-2xl font-bold text-primary-dark mb-6 border-l-4 border-primary-green pl-4">FAQ</h3>
+            
+            <div class="mb-6">
+              <h4 class="font-bold text-primary-dark mb-2 text-lg">Are these glasses dishwasher safe?</h4>
+              <p class="text-gray-700 leading-relaxed">To preserve the intricate detailing and luxury finish of our metal stems, we highly recommend gently hand-washing all MAIRAÉ glassware with warm water and mild soap.</p>
+            </div>
+            
+            <div class="mb-6">
+              <h4 class="font-bold text-primary-dark mb-2 text-lg">Do you sell glasses individually or in sets?</h4>
+              <p class="text-gray-700 leading-relaxed">Both! You can purchase our statement pieces individually, or build a cohesive look with our luxury glassware sets.</p>
+            </div>
+            
+            <div>
+              <h4 class="font-bold text-primary-dark mb-2 text-lg">Are these suitable for gifting?</h4>
+              <p class="text-gray-700 leading-relaxed">Absolutely. Every MAIRAÉ order is carefully packaged, making them ideal gifts for bar lovers, anniversaries, and birthdays.</p>
+            </div>
+          </div>
+
+          <!-- Shipping & Returns -->
+          <div>
+            <h3 class="text-2xl font-bold text-primary-dark mb-6 border-l-4 border-primary-green pl-4">Shipping & Returns</h3>
+            
+            <div class="bg-beige-100 rounded-xl p-6 mb-6">
+              <h4 class="font-bold text-primary-dark mb-3 text-lg flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-primary-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                </svg>
+                Shipping
+              </h4>
+              <p class="text-gray-700 leading-relaxed">We securely pack our aesthetic glassware to ensure it arrives in pristine condition. Orders are processed within 1-2 business days.</p>
+            </div>
+            
+            <div class="bg-beige-100 rounded-xl p-6">
+              <h4 class="font-bold text-primary-dark mb-3 text-lg flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-primary-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z" />
+                </svg>
+                Returns
+              </h4>
+              <p class="text-gray-700 leading-relaxed">We stand by the quality of our premium barware. If your item arrives damaged or you are not completely satisfied, we offer a hassle-free 14-day return policy. Please keep the original packaging.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Banner -->
+    <section class="py-20 bg-primary-dark text-white text-center">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4">Spring Collection is Here</h2>
+        <p class="mb-8 text-beige-200 text-lg">Refresh your home with our newest arrivals featuring natural textures and earthy tones.</p>
+        <a href="/pages/shop.html" class="btn-primary bg-beige-200 text-primary-dark hover:bg-white hover:text-primary-dark">Explore New Arrivals</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script type="module" src="./js/main.js"></script>
+  <script type="module">
+    import { products } from './js/products.js';
+    import { renderProductCard } from './components/productCard.js';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const container = document.getElementById('featured-products');
+      const data = await products.getProducts({ limit: 4 });
+      
+      if (data && data.products && data.products.length > 0) {
+        container.innerHTML = data.products.map(p => renderProductCard(p)).join('');
+      } else {
+        container.innerHTML = '<p class="col-span-full text-center text-gray-500">No products found. (Run the seed script!)</p>';
+      }
+    });
+  </script>
+</body>
+</html>

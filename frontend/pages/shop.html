@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | MAIRAÉ</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body class="bg-beige-100 flex flex-col min-h-screen">
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+    <div class="flex flex-col md:flex-row gap-8">
+      
+      <!-- Filters Sidebar -->
+      <aside class="w-full md:w-64 flex-shrink-0">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-beige-200">
+          <h2 class="text-lg font-bold text-primary-dark mb-4 border-b border-beige-200 pb-2">Categories</h2>
+          <ul class="space-y-3" id="category-filter">
+            <li><button class="filter-btn text-gray-600 hover:text-primary-green w-full text-left font-medium" data-category="">All</button></li>
+            <li><button class="filter-btn text-gray-600 hover:text-primary-green w-full text-left font-medium" data-category="Martini & Coupe Glasses">Martini & Coupe Glasses</button></li>
+            <li><button class="filter-btn text-gray-600 hover:text-primary-green w-full text-left font-medium" data-category="Whisky & Rocks Glasses">Whisky & Rocks Glasses</button></li>
+            <li><button class="filter-btn text-gray-600 hover:text-primary-green w-full text-left font-medium" data-category="Wine Glasses & Goblets">Wine Glasses & Goblets</button></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Products Grid -->
+      <div class="flex-grow">
+        <div class="mb-6 flex justify-between items-center bg-white p-4 rounded-xl border border-beige-200 shadow-sm">
+          <span id="product-count" class="text-gray-600 font-medium">Loading...</span>
+          <input type="text" id="search-input" placeholder="Search products..." class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-primary-green focus:ring-1 focus:ring-primary-green w-full max-w-xs">
+        </div>
+
+        <div id="shop-products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="col-span-full text-center py-20 text-gray-500">Loading products...</div>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="mt-12 flex justify-center space-x-2">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script type="module" src="../js/main.js"></script>
+  <script type="module">
+    import { products } from '../js/products.js';
+    import { renderProductCard } from '../components/productCard.js';
+
+    let currentCategory = new URLSearchParams(window.location.search).get('category') || '';
+    let currentPage = 1;
+    let currentSearch = '';
+
+    const container = document.getElementById('shop-products');
+    const countEl = document.getElementById('product-count');
+    const pagContainer = document.getElementById('pagination');
+    const searchInput = document.getElementById('search-input');
+
+    async function loadProducts() {
+      container.innerHTML = '<div class="col-span-full py-10 text-center"><div class="inline-block animate-spin rounded-full border-4 border-solid border-primary-green border-r-transparent h-8 w-8"></div></div>';
+      
+      const data = await products.getProducts({ 
+        category: currentCategory, 
+        search: currentSearch, 
+        page: currentPage, 
+        limit: 9 
+      });
+
+      if (data && data.products && data.products.length > 0) {
+        container.innerHTML = data.products.map(p => renderProductCard(p)).join('');
+        countEl.textContent = `Showing ${data.products.length} of ${data.total} products`;
+        
+        // Render Pagination
+        let pagHtml = '';
+        for (let i = 1; i <= data.totalPages; i++) {
+          pagHtml += `<button data-page="${i}" class="pag-btn px-4 py-2 rounded-lg ${i === currentPage ? 'bg-primary-green text-white' : 'bg-white text-gray-700 hover:bg-beige-200 border border-beige-200'}">${i}</button>`;
+        }
+        pagContainer.innerHTML = pagHtml;
+
+        // Pagination listeners
+        document.querySelectorAll('.pag-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            currentPage = parseInt(e.target.dataset.page);
+            loadProducts();
+            window.scrollTo(0, 0);
+          });
+        });
+
+      } else {
+        container.innerHTML = '<div class="col-span-full py-10 text-center text-gray-500">No products found matching your criteria.</div>';
+        countEl.textContent = '0 products found';
+        pagContainer.innerHTML = '';
+      }
+
+      // Update active category UI
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.dataset.category === currentCategory) {
+          btn.classList.add('text-primary-green', 'font-bold');
+        } else {
+          btn.classList.remove('text-primary-green', 'font-bold');
+        }
+      });
+    }
+
+    // Initialize
+    loadProducts();
+
+    // Event Listeners
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        currentCategory = e.target.dataset.category;
+        currentPage = 1;
+        loadProducts();
+        
+        // Update URL
+        const url = new URL(window.location);
+        if (currentCategory) {
+          url.searchParams.set('category', currentCategory);
+        } else {
+          url.searchParams.delete('category');
+        }
+        window.history.pushState({}, '', url);
+      });
+    });
+
+    // Debounced search
+    let timeout = null;
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        currentSearch = e.target.value;
+        currentPage = 1;
+        loadProducts();
+      }, 500);
+    });
+  </script>
+</body>
+</html>
